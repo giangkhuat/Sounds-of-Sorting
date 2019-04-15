@@ -3,7 +3,7 @@ package grinnell.edu.sortingvisualizer.events;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CopyEvent<T extends Comparable<T>> implements SortEvent<T> {
+public class CopyEvent<T extends Comparable<T>> implements SortEvent <T> {
   private int index;
   private T val;
   

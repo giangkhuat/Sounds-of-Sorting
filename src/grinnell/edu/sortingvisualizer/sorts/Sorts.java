@@ -1,6 +1,6 @@
 package grinnell.edu.sortingvisualizer.sorts;
 
-public class Sorts<T> {
+public class Sorts <T extends Comparable<T>> {
 
   /**
    * Selection sort
