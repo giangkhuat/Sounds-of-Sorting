@@ -96,13 +96,61 @@ public class Sorts<T extends Comparable<T>> {
   }
 
 
+  
+  
+
+  /*
+   * Procedure mergeSortHelper
+   */
+
+  public static <T extends Comparable<T>> void mergeSortHelper(T[] arr, int lo, int hi) {
+    if (lo < hi - 1) {
+      int mid = lo + (hi - lo) / 2;
+      mergeSortHelper(arr, lo, mid);
+      mergeSortHelper(arr, mid, hi);
+      merge(arr, lo, mid, hi);
+    }
+    else {
+      return ;
+    }
+  }
+  
+  
+  
+  public static <T extends Comparable<T>> void merge 
+  (T[] arr, int lo, int mid, int hi) {
+      Object[] temp = new Object[hi-lo];
+      int i = lo, j = mid, k = 0;
+
+      while (i < mid && j < hi) {
+          if (arr[i].compareTo(arr[j]) <= 0) {
+              temp[k++] = arr[i++];
+          } else {
+              temp[k++] = arr[j++];
+          }
+      } // while
+
+      // Copies the remaining elements into temp
+      while (i < mid) {
+          temp[k++] = arr[i++];
+      }
+
+      while (j < hi) {
+          temp[k++] = arr[j++];
+      }
+
+      // Put elements in temp back into arr
+      for (int n = 0; n < hi - lo; n++) {
+          arr[n + lo] =  (T) temp[n];
+      }
+  } // merge 
+
   /*
    * Procedure to perform merge for mergeSort
    */
-
+/*
   public static <T extends Comparable<T>> void merge(T[] arr, int lo, int hi, int mid) {
-    int i = lo;
-    int j = mid, k = 0;
+    int i = lo, j = mid, k = 0;
 
     @SuppressWarnings("unchecked")
     //T[] temp = (T[]) new Object[hi - lo];
@@ -110,13 +158,10 @@ public class Sorts<T extends Comparable<T>> {
     
     while (i < mid && j < hi) {
       if ((arr[i]).compareTo(arr[j]) <= 0) {
-        temp[k] = arr[i];
-        i++;
+        temp[k++] = arr[i++];
       } else {
-        temp[k] = arr[j];
-        j++;
+        temp[k++] = arr[j++];
       }
-      k++;
     }
 
     while (i < mid) {
@@ -131,23 +176,5 @@ public class Sorts<T extends Comparable<T>> {
       arr[n + lo] = temp[n];
     }
   }
-
-
-  /*
-   * Procedure mergeSortHelper
-   */
-
-  public static <T extends Comparable<T>> void mergeSortHelper(T[] arr, int lo, int hi) {
-    if (hi - lo > 1) {
-      int mid = lo + (hi - lo) / 2;
-      mergeSortHelper(arr, lo, mid);
-      mergeSortHelper(arr, mid, hi);
-      merge(arr, lo, hi, mid);
-    }
-    else {
-      return ;
-    }
-  }
-  
-   
+*/
 }

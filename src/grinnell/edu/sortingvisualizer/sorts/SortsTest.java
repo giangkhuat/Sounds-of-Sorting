@@ -19,11 +19,6 @@ class SortsTest<T extends Comparable<T>> {
   <T extends Comparable<T>> void checkSortInts(Consumer<Integer[]> sorter, Integer[] expected,
       Integer[] values) {
     sorter.accept(values);
-    for (int i = 0; i < values.length ; i++) {
-      System.out.print(values[i]);
-      System.out.print(expected[i]);
-    }
-    System.out.println();
     assertArrayEquals(expected, values);
   } // checkSortInts
 
