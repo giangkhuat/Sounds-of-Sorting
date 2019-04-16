@@ -23,13 +23,13 @@ public class SortsAugmented<T extends Comparable<T>> {
     for (int i = 0; i < n - 1; i++) {
       int minIndex = i;
       for (int j = i + 1; j < n; j++) {
-        if (arr[j].compareTo(arr[minIndex]) <= 0) {
+        if (arr[j].compareTo(arr[minIndex]) < 0) {
           eventList.add(new CompareEvent<T>(j, minIndex));
           minIndex = j;
         }
-        swap(arr, i, minIndex);
-        eventList.add(new SwapEvent<T>(i, minIndex));
       }
+      swap(arr, i, minIndex);
+      eventList.add(new SwapEvent<T>(i, minIndex));
     }
     return eventList;
   }

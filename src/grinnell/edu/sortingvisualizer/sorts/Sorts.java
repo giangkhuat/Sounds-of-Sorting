@@ -1,6 +1,9 @@
 package grinnell.edu.sortingvisualizer.sorts;
 
-public class Sorts <T extends Comparable<T>> {
+public class Sorts<T extends Comparable<T>> {
+  public Sorts() {
+    
+  }
 
   /**
    * Selection sort
@@ -15,8 +18,8 @@ public class Sorts <T extends Comparable<T>> {
         if (arr[j].compareTo(arr[minIndex]) <= 0) {
           minIndex = j;
         }
-        swap(arr, i, minIndex);
       }
+      swap(arr, i, minIndex);
     }
   }
 
@@ -102,10 +105,11 @@ public class Sorts <T extends Comparable<T>> {
     int j = mid, k = 0;
 
     @SuppressWarnings("unchecked")
-    T[] temp = (T[]) new Object[hi - lo];
-
+    //T[] temp = (T[]) new Object[hi - lo];
+    T[] temp = arr;
+    
     while (i < mid && j < hi) {
-      if (arr[i].compareTo(arr[j]) <= 0) {
+      if ((arr[i]).compareTo(arr[j]) <= 0) {
         temp[k] = arr[i];
         i++;
       } else {
@@ -123,7 +127,7 @@ public class Sorts <T extends Comparable<T>> {
       temp[k++] = arr[j++];
     }
 
-    for (int n = 0; n <= (hi - lo); n++) {
+    for (int n = 0; n < (hi - lo); n++) {
       arr[n + lo] = temp[n];
     }
   }
@@ -135,10 +139,15 @@ public class Sorts <T extends Comparable<T>> {
 
   public static <T extends Comparable<T>> void mergeSortHelper(T[] arr, int lo, int hi) {
     if (hi - lo > 1) {
-      int mid = (hi + lo) / 2 + 1;
+      int mid = lo + (hi - lo) / 2;
       mergeSortHelper(arr, lo, mid);
       mergeSortHelper(arr, mid, hi);
       merge(arr, lo, hi, mid);
     }
+    else {
+      return ;
+    }
   }
+  
+   
 }
