@@ -1,4 +1,4 @@
-package grinnell.edu.sortingvisualizer.sorts;
+package edu.grinnell.sortingvisualizer.sorts;
 
 public class mergeExperiment {
 
@@ -6,8 +6,8 @@ public class mergeExperiment {
     String[] arr = {"a", "a", "h", "b", "d", "c"};
     Integer[] arr1 = {0, 2, 9, 1, 9, 8};
     //Sorts<String> obj = new Sorts<String>();
-    Sorts.mergeSort(arr);
-    Sorts.mergeSort(arr1);
+    SortsPart1.mergeSort(arr);
+    SortsPart1.mergeSort(arr1);
     for (int i = 0; i < arr.length ; i++) {
       System.out.println(arr[i]);
     }

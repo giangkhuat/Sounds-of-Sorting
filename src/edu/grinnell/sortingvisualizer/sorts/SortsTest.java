@@ -1,14 +1,14 @@
-package grinnell.edu.sortingvisualizer.sorts;
+package edu.grinnell.sortingvisualizer.sorts;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.function.Consumer;
 import org.junit.jupiter.api.Test;
-import grinnell.edu.sortingvisualizer.sorts.utils.TestUtils;
+import edu.grinnell.sortingvisualizer.sorts.utils.TestUtils;
 
 class SortsTest<T extends Comparable<T>> {
 
   // +-----------------+--------------------------------------------------
-  // | Ultilities |
+  // | Ultilities      |
   // +-----------------+/*
 
   /**
@@ -67,10 +67,11 @@ class SortsTest<T extends Comparable<T>> {
 
   @Test
   void testEmptyInts() {
-    testEmptyInts((arr) -> Sorts.insertionSort(arr));
-    testEmptyInts((arr) -> Sorts.selectionSort(arr));
-    testEmptyInts((arr) -> Sorts.mergeSort(arr));
-    testEmptyInts((arr) -> Sorts.quickSort(arr));
+    testEmptyInts((arr) -> SortsPart1.insertionSort(arr));
+    testEmptyInts((arr) -> SortsPart1.selectionSort(arr));
+    testEmptyInts((arr) -> SortsPart1.mergeSort(arr));
+    testEmptyInts((arr) -> SortsPart1.quickSort(arr));
+    testEmptyInts((arr) -> SortsPart1.heapSort(arr));
   } // testEmptyInts
 
   void testEmptyStrings(Consumer<String[]> sorter) {
@@ -80,10 +81,11 @@ class SortsTest<T extends Comparable<T>> {
 
   @Test
   void testEmptyStrings() {
-    testEmptyStrings((arr) -> Sorts.insertionSort(arr));
-    testEmptyStrings((arr) -> Sorts.selectionSort(arr));
-    testEmptyStrings((arr) -> Sorts.mergeSort(arr));
-    testEmptyStrings((arr) -> Sorts.quickSort(arr));
+    testEmptyStrings((arr) -> SortsPart1.insertionSort(arr));
+    testEmptyStrings((arr) -> SortsPart1.selectionSort(arr));
+    testEmptyStrings((arr) -> SortsPart1.mergeSort(arr));
+    testEmptyStrings((arr) -> SortsPart1.quickSort(arr));
+    testEmptyStrings((arr) -> SortsPart1.heapSort(arr));
   } // testEmptyStrings
 
 
@@ -100,10 +102,11 @@ class SortsTest<T extends Comparable<T>> {
 
   @Test
   void testOrderedInts() {
-  //  testOrderedInts((arr) -> Sorts.selectionSort(arr));
-    testOrderedInts((arr) -> Sorts.mergeSort(arr));
-   // testOrderedInts((arr) -> Sorts.quickSort(arr));
-    //testOrderedInts((arr) -> Sorts.insertionSort(arr));
+    testOrderedInts((arr) -> SortsPart1.selectionSort(arr));
+    testOrderedInts((arr) -> SortsPart1.mergeSort(arr));
+    testOrderedInts((arr) -> SortsPart1.quickSort(arr));
+    testOrderedInts((arr) -> SortsPart1.insertionSort(arr));
+    testOrderedInts((arr) -> SortsPart1.heapSort(arr));
   } // testOrderedInts
 
 
@@ -121,10 +124,11 @@ class SortsTest<T extends Comparable<T>> {
 
   @Test
   void testOrderedStrings() {
-    testOrderedStrings((arr) -> Sorts.insertionSort(arr));
-    testOrderedStrings((arr) -> Sorts.selectionSort(arr));
-    // testOrderedStrings((arr)->Sorts.mergeSort(arr));
-    testOrderedStrings((arr) -> Sorts.quickSort(arr));
+    testOrderedStrings((arr) -> SortsPart1.insertionSort(arr));
+    testOrderedStrings((arr) -> SortsPart1.selectionSort(arr));
+    testOrderedStrings((arr) -> SortsPart1.mergeSort(arr));
+    testOrderedStrings((arr) -> SortsPart1.quickSort(arr));
+    testOrderedStrings((arr) -> SortsPart1.heapSort(arr));
   } // testOrderedStrings
 
 
@@ -142,10 +146,11 @@ class SortsTest<T extends Comparable<T>> {
 
   @Test
   void testBackwardsInts() {
-    testBackwardsInts((arr) -> Sorts.insertionSort(arr));
-    testBackwardsInts((arr) -> Sorts.selectionSort(arr));
-    testBackwardsInts((arr) -> Sorts.mergeSort(arr));
-    testBackwardsInts((arr) -> Sorts.quickSort(arr));
+    testBackwardsInts((arr) -> SortsPart1.insertionSort(arr));
+    testBackwardsInts((arr) -> SortsPart1.selectionSort(arr));
+    testBackwardsInts((arr) -> SortsPart1.mergeSort(arr));
+    testBackwardsInts((arr) -> SortsPart1.quickSort(arr));
+    testBackwardsInts((arr) -> SortsPart1.heapSort(arr));
   } // testBackwardsInts
 
   void testBackwardsStrings(Consumer<String[]> sorter) {
@@ -154,8 +159,10 @@ class SortsTest<T extends Comparable<T>> {
       String[] backwards = new String[size];
       for (int i = 0; i < size; i++) {
         // get the character representing the number from the end size of the array
-        char charLast = (char) (size - i + 26);
-        char charBeg = (char) (i + 26);
+        // add 97 to start from 'a'
+        // minus 1 since size start from 1
+        char charLast = (char) (size - i + 96);
+        char charBeg = (char) (i + 97);
         String strLast = Character.toString(charLast);
         String strBeg = Character.toString(charBeg);
         // put in the two arrays
@@ -168,25 +175,36 @@ class SortsTest<T extends Comparable<T>> {
 
   @Test
   void testBackwardsStrings() {
-    testBackwardsStrings((arr) -> Sorts.insertionSort(arr));
-    testBackwardsStrings((arr) -> Sorts.selectionSort(arr));
-    testBackwardsStrings((arr) -> Sorts.mergeSort(arr));
-    testBackwardsStrings((arr) -> Sorts.quickSort(arr));
+    testBackwardsStrings((arr) -> SortsPart1.insertionSort(arr));
+    testBackwardsStrings((arr) -> SortsPart1.selectionSort(arr));
+    testBackwardsStrings((arr) -> SortsPart1.mergeSort(arr));
+    testBackwardsStrings((arr) -> SortsPart1.quickSort(arr));
+    testBackwardsStrings((arr) -> SortsPart1.heapSort(arr));
   } // testBackwardsInts
 
-  // @Test
-  // void testRandom() {
-  // for (int trials = 0; trials < 5; trials++) {
-  // // Some comparatively small ones
-  // for (int size = 1; size < 20; size++) {
-  // checkQuicksort(TestUtils.randomInts(size));
-  // } // for size
-  // // Some larger ones
-  // for (int size = 30; size < 1000; size = size*2 + 1) {
-  // checkQuicksort(TestUtils.randomInts(size));
-  // } // for size
-  // } // for trials
-  // } // testRandom()
+
+  void testRandom(Consumer<Integer[]> sorter) {
+    for (int trials = 0; trials < 5; trials++) {
+      // Some comparatively small ones
+      for (int size = 1; size < 20; size++) {
+        Integer[] sorted = TestUtils.randomIntegers(size);
+        checkSortedInts(sorter, sorted);
+      } // for size
+        // Some larger ones
+      for (int size = 30; size < 1000; size = size * 2 + 1) {
+        Integer[] sorted = TestUtils.randomIntegers(size);
+        checkSortedInts(sorter, sorted);
+      } // for size
+    } // for trials
+  } // testRandom()
+
+  @Test
+  void testRandomInts() {
+    testRandom((arr) -> SortsPart1.insertionSort(arr));
+    testRandom((arr) -> SortsPart1.selectionSort(arr));
+    testRandom((arr) -> SortsPart1.mergeSort(arr));
+    testRandom((arr) -> SortsPart1.quickSort(arr));
+    testRandom((arr) -> SortsPart1.heapSort(arr));
+  } // testRandom
+
 }
-
-

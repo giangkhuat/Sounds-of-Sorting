@@ -1,4 +1,4 @@
-package grinnell.edu.sortingvisualizer.sorts.utils;
+package edu.grinnell.sortingvisualizer.sorts.utils;
 
 import java.util.Random;
 
@@ -102,6 +102,18 @@ public class TestUtils {
     } // for
     return result;
   } // randomInts(int)
+  
+  /**
+   * Create an unpredictable array of integers in non-decreasing order (type Object Integer).
+   */
+  public static Integer[] randomIntegers(int size) {
+    Integer[] result = new Integer[size];
+    result[0] = Integer.valueOf(50 - rand.nextInt(100));
+    for (int i = 1; i < size; i++) {
+      result[i] = result[i-1] + Integer.valueOf(rand.nextInt(3));
+    } // for
+    return result;
+  } // randomIntegers(int)
   
   /**
    * Randomly permute an array.
