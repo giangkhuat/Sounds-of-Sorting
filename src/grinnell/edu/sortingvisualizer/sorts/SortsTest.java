@@ -41,8 +41,9 @@ class SortsTest<T extends Comparable<T>> {
 
   @SuppressWarnings("unchecked")
   @Test
-  <T extends Comparable<T>> void testEmpty() {
-    checkInsertionsort((T[])new Object[0]);
+  // <T extends Comparable<T>>
+   void testEmpty() {
+    checkInsertionsort((T[]) (new Object[0]));
   } // testEmpty
 
   @SuppressWarnings("unchecked")
@@ -94,8 +95,8 @@ class SortsTest<T extends Comparable<T>> {
   @Test
   <T extends Comparable<T>> void testBackwardsStrings() {
     for (int size = 1; size < 20; size++) {
-      T[] sorted = (T[]) new Object[size];
-      T[] backwards = (T[]) new Object[size];
+      String[] sorted = new String[size];
+      String[] backwards = new String[size];
       for (int i = 0; i < size; i++) {
         // get the character representing the number from the end size of the array
         char charLast = (char) (size - i);
@@ -103,8 +104,8 @@ class SortsTest<T extends Comparable<T>> {
         String strLast = Character.toString(charLast);
         String strBeg = Character.toString(charBeg);
         // put in the two arrays
-        backwards[i] =   (T) strLast;
-        sorted[i] = (T) strBeg;
+        backwards[i] =   strLast;
+        sorted[i] = strBeg;
       } // for
       checkInsertionsort(sorted, backwards);
     } // for
