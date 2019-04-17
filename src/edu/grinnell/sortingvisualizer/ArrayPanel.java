@@ -27,12 +27,12 @@ public class ArrayPanel extends JPanel {
     public void paintComponent(Graphics g) {
       // draw the notes on the panel
         Integer[] noteIndices = notes.getNotes();
-        int width = this.getWidth()/ notes.length();
-        int height = this.getHeight()/notes.length();
+        int width = this.getWidth()/ notes.notesLength();
+        int height = this.getHeight()/notes.notesLength();
         // set color
         int color = 0;
         
-        for (int i = 0 ; i < notes.length(); i++) {
+        for (int i = 0 ; i < notes.notesLength(); i++) {
           // set the height of the note
           int noteHeight = height + noteIndices[i] * height;
           // if the note is highlighted

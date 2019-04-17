@@ -1,5 +1,7 @@
 package edu.grinnell.sortingvisualizer;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 
 /**
@@ -9,7 +11,7 @@ import java.util.Random;
  */
 public class NoteIndices {
   
-  Integer[] notes = new Integer[0];
+  private Integer[] notes;
   
   /**
    * Helper: Create an random array of integers from 0 to size-1 (type Object Integer).
@@ -28,7 +30,8 @@ public class NoteIndices {
      * @param n the size of the scale object that these indices map into
      */
     public NoteIndices(int n) {
-       this.notes = new Integer[n];
+     //  this.notes = new Integer[n];
+      initializeAndShuffle(n);
     }
     
     /**
@@ -38,6 +41,7 @@ public class NoteIndices {
      * @param n the size of the scale object that these indices map into
      */
     public void initializeAndShuffle(int n) {      
+      /*
       Random rand = new Random();
       Integer[] result = new Integer[n];
       result[0] = Integer.valueOf(rand.nextInt(n));
@@ -45,6 +49,12 @@ public class NoteIndices {
         result[i] = Integer.valueOf(rand.nextInt(n));
       } // for
       this.notes = result;
+      */
+      notes = new Integer[n];
+      for (int i = 0; i < n ; i++) {
+        notes[i] = i;
+      }
+      Collections.shuffle(Arrays.asList(notes));
     }
     
     /** @return the indices of this NoteIndices object */
@@ -68,6 +78,11 @@ public class NoteIndices {
     
     /** Clears all highlighted indices from this collection */
     public void clearAllHighlighted() {
-        // TODO: fill me in
+        
+    }
+    
+    
+    public int notesLength() {
+      return notes.length;
     }
 }
