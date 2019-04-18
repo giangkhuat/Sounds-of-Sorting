@@ -1,10 +1,11 @@
-package edu.grinnell.sortingvisualizer;
+package edu.grinnell.sortingvisualizer.rendering;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
+import edu.grinnell.sortingvisualizer.audio.NoteIndices;
 
 @SuppressWarnings("serial")
 public class ArrayPanel extends JPanel {
@@ -25,23 +26,30 @@ public class ArrayPanel extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
+      //set background to white
+      g.setColor(Color.WHITE);
+      
       // draw the notes on the panel
         Integer[] noteIndices = notes.getNotes();
-        int width = this.getWidth()/ notes.notesLength();
-        int height = this.getHeight()/notes.notesLength();
+        int noteWidth = this.getWidth()/ notes.notesLength();
+        //divide height into n parts
+        int heightPart = this.getHeight()/notes.notesLength();
         // set color
-        int color = 0;
+        int colorScale = 10;
         
         for (int i = 0 ; i < notes.notesLength(); i++) {
-          // set the height of the note
-          int noteHeight = height + noteIndices[i] * height;
+          // scale height of rectangle using heightPart
+          int noteHeight = heightPart * (noteIndices[i] + 1);
           // if the note is highlighted
           if (notes.isHighlighted(i)) {
-            g.setColor(Color.BLUE);
+            g.setColor(Color.CYAN);
           } else { 
-            int comp = noteIndices[i]*color;
+            //scale color according to value
+            int comp = noteIndices[i]*colorScale;
             g.setColor(new Color(0, comp, comp));
           }
+          //build the rectangle
+          g.fillRect(noteWidth * i, this.getHeight() - noteHeight, noteWidth, noteHeight);
         }
     }
 }

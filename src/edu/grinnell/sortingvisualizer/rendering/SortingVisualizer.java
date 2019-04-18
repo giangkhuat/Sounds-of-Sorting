@@ -1,8 +1,9 @@
-package edu.grinnell.sortingvisualizer;
+package edu.grinnell.sortingvisualizer.rendering;
 
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
+import edu.grinnell.sortingvisualizer.audio.NoteIndices;
 
 public class SortingVisualizer {
 

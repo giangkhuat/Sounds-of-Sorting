@@ -7,7 +7,6 @@ public class CompareEvent<T extends Comparable<T>> implements SortEvent<T> {
   private int firstIndex;
   private int secondIndex;
 
-  // why cant we parametrize constructor
   public CompareEvent(int first, int second) {
     this.firstIndex = first;
     this.secondIndex = second;
