@@ -46,19 +46,10 @@ public class ArrayPanel extends JPanel {
       }
       // build the rectangle
       g.fillRect(noteWidth * i, this.getHeight() - noteHeight, noteWidth, noteHeight);
-      //build the complement of the rectangle
+      // build the complement of the rectangle to erase the shadow part behind
       g.setColor(Color.WHITE);
       g.fillRect(noteWidth * i, 0, noteWidth, this.getHeight() - noteHeight);
     }
-    /*
-    int lastNote = notes.notesLength() - 1;
- // build the rectangle
-    int comp = noteIndices[lastNote] * colorScale;
-    g.setColor(new Color(0, comp, comp));
-    g.fillRect(noteWidth * lastNote, this.getHeight() - (heightPart * (noteIndices[lastNote]) + 1), noteWidth, (noteIndices[lastNote] + 1));
-    lastNote--;
-    comp = noteIndices[lastNote] * colorScale;
-    g.fillRect(noteWidth * lastNote, this.getHeight() - (heightPart * (noteIndices[lastNote]) + 1), noteWidth, (noteIndices[lastNote] + 1));
-    */
+    notes.clearAllHighlighted();
   }
 }

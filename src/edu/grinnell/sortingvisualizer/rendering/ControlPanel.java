@@ -141,9 +141,12 @@ public class ControlPanel extends JPanel {
         List<SortEvent<Integer>> events =
             generateEvents((String) sorts.getSelectedItem(), notesCopy);
         // Add compare events
+       
         for (int i = 0; i < notes.getNotes().length - 1; i++) {
           events.add(new CompareEvent<Integer>(i, i + 1));
         }
+        
+
 
         // NOTE: The Timer class repetitively invokes a method at a
         // fixed interval. Here we are specifying that method
