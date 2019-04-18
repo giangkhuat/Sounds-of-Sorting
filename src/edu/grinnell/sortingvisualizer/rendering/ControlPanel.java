@@ -171,6 +171,8 @@ public class ControlPanel extends JPanel {
               notes.clearAllHighlighted();
               e.apply(notes.getNotes());
               for (Integer i : e.getAffectedIndices()) {
+                System.out.println(i);
+                System.out.println(e.toString());
                 scale.playNote(i, e.isEmphasized());
                 notes.highlightNote(i);
               }

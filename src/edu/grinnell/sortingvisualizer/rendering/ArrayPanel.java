@@ -35,7 +35,7 @@ public class ArrayPanel extends JPanel {
 
     for (int i = 0; i < notes.notesLength(); i++) {
       // scale height of rectangle using heightPart
-      int noteHeight = heightPart * (noteIndices[i] + 1);
+      int noteHeight = heightPart * (Math.abs(noteIndices[i]) + 1);
       // if the note is highlighted
       if (notes.isHighlighted(i)) {
         g.setColor(Color.CYAN);

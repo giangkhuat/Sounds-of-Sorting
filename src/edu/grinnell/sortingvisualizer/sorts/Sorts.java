@@ -49,7 +49,7 @@ public class Sorts<T extends Comparable<T>> {
       T val = arr[i];
       int j = i - 1;
       while (j >= 0 && (arr[j].compareTo(val) > 0)) {
-        eventList.add(new CompareEvent<T>(j - 1, j));
+        eventList.add(new CompareEvent<T>(i, j));
         arr[j + 1] = arr[j];
         eventList.add(new CopyEvent<T>(j + 1, arr[j]));
         j--;
@@ -84,8 +84,8 @@ public class Sorts<T extends Comparable<T>> {
     int i = lo;
     int j = mid, k = 0;
 
-    Object[] temp = (T[]) new Object[hi - lo];
-
+    // Object[] temp = (T[]) new Object[hi - lo];
+    Object[] temp = new Object[hi - lo];
     while (i < mid && j < hi) {
       events.add(new CompareEvent<T>(i, j));
       if (arr[i].compareTo(arr[j]) <= 0) {
@@ -176,6 +176,7 @@ public class Sorts<T extends Comparable<T>> {
   /**
    * Heapsort
    */
+
   public static <T extends Comparable<T>> List<SortEvent<T>> heapSort(T[] arr) {
     List<SortEvent<T>> eventList = new ArrayList<>();
     int n = arr.length;
@@ -209,7 +210,7 @@ public class Sorts<T extends Comparable<T>> {
     eventList.add(new CompareEvent<T>(l, largest));
     if (l < n && arr[l].compareTo(arr[largest]) > 0)
       largest = l;
-
+    System.out.println("l" + l);
     // If right child is larger than largest so far
     eventList.add(new CompareEvent<T>(r, largest));
     if (r < n && arr[r].compareTo(arr[largest]) > 0)
