@@ -1,13 +1,10 @@
 package edu.grinnell.sortingvisualizer.sorts.utils;
 
 import java.util.Random;
-
 import java.util.ArrayList;
 import java.util.Iterator;
-
 import java.util.function.Predicate;
 import java.util.function.Supplier;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -27,8 +24,8 @@ public class TestUtils {
   // +---------+
 
   /**
-   * Append a bunch of values to an ArrayList. (This probably exists 
-   * somewhere, but I'm too lazy to find it.)
+   * Append a bunch of values to an ArrayList. (This probably exists somewhere, but I'm too lazy to
+   * find it.)
    */
   public static <T> void appendValues(ArrayList<T> lst, T[] values) {
     for (T val : values) {
@@ -36,27 +33,25 @@ public class TestUtils {
     } // for
   } // appendValues
 
-  /** 
+  /**
    * Check that the values return by it are the values in expected
    */
-  public static <T> void checkIterator(T[] expected, Iterator<T> it,
-      Supplier<String> message) {
+  public static <T> void checkIterator(T[] expected, Iterator<T> it, Supplier<String> message) {
     for (int i = 0; i < expected.length; i++) {
       assertTrue(it.hasNext(), message);
       assertEquals(expected[i], it.next(), message);
     } // for
     assertFalse(it.hasNext(), message);
   } // checkIterator
-  
-  public static <T> void checkIterator(T[] expected, Iterator<T> it, 
-      String message) {
+
+  public static <T> void checkIterator(T[] expected, Iterator<T> it, String message) {
     checkIterator(expected, it, () -> message);
   } // checkIterator(T[], Iterator<T>, String)
-  
+
   public static <T> void checkIterator(T[] expected, Iterator<T> it) {
     checkIterator(expected, it, () -> "");
   } // checkIterator(T[], Iterator<T>)
-  
+
   public static void checkIterator(int[] expected, Iterator<Integer> it) {
     for (int i = 0; i < expected.length; i++) {
       assertTrue(it.hasNext(), "position " + i);
@@ -64,7 +59,7 @@ public class TestUtils {
     } // checkIterator
     assertFalse(it.hasNext());
   } // checKIterator
-  
+
   /**
    * Return a predicate that holds when its parameter is less than n.
    */
@@ -79,7 +74,7 @@ public class TestUtils {
     return (i) -> i > n;
   } // greaterThan
 
-   /**
+  /**
    * Create an ArrayList with an array of values. (This probably exists somewhere, but I can't find
    * it.)
    */
@@ -98,11 +93,11 @@ public class TestUtils {
     int[] result = new int[size];
     result[0] = 50 - rand.nextInt(100);
     for (int i = 1; i < size; i++) {
-      result[i] = result[i-1] + rand.nextInt(3);
+      result[i] = result[i - 1] + rand.nextInt(3);
     } // for
     return result;
   } // randomInts(int)
-  
+
   /**
    * Create an unpredictable array of integers in non-decreasing order (type Object Integer).
    */
@@ -110,11 +105,11 @@ public class TestUtils {
     Integer[] result = new Integer[size];
     result[0] = Integer.valueOf(50 - rand.nextInt(100));
     for (int i = 1; i < size; i++) {
-      result[i] = result[i-1] + Integer.valueOf(rand.nextInt(3));
+      result[i] = result[i - 1] + Integer.valueOf(rand.nextInt(3));
     } // for
     return result;
   } // randomIntegers(int)
-  
+
   /**
    * Randomly permute an array.
    */
@@ -123,16 +118,16 @@ public class TestUtils {
       TestUtils.swap(values, i, rand.nextInt(values.length));
     } // for
   } // randomlyPermute(T[])
-  
+
   /**
    * Randomly permute an array of integers
    */
   public static void randomlyPermute(int[] values) {
     for (int i = 0; i < values.length; i++) {
-      TestUtils.swap(values,  i,  rand.nextInt(values.length));
+      TestUtils.swap(values, i, rand.nextInt(values.length));
     } // for
   } // randomlyPermute
-  
+
   /**
    * Create an ArrayList with values from lb (inclusive) to ub (exclusive).
    */
@@ -148,23 +143,21 @@ public class TestUtils {
   /**
    * Remove all the values that meet a predicate.
    */
-  public static <T> void remove(Iterable<? extends T> values, 
-      Predicate<? super T> pred) {
+  public static <T> void remove(Iterable<? extends T> values, Predicate<? super T> pred) {
     remove(values.iterator(), pred);
   } // remove(Iterable, Predicate)
- 
+
   /**
    * Remove all the values the meet a predicate
    */
-  public static <T> void remove(Iterator<? extends T> it, 
-      Predicate<? super T> pred) {
+  public static <T> void remove(Iterator<? extends T> it, Predicate<? super T> pred) {
     while (it.hasNext()) {
       if (pred.test(it.next())) {
         it.remove();
       } // if
     } // while
   } // remove
-  
+
   /**
    * Remove all the values associated with an iterator.
    */
@@ -174,7 +167,7 @@ public class TestUtils {
       it.remove();
     } // while
   } // removeAll
-  
+
   /**
    * Swap two values in an array.
    */
@@ -183,7 +176,7 @@ public class TestUtils {
     values[i] = values[j];
     values[j] = temp;
   } // swap
-  
+
   public static void swap(int[] values, int i, int j) {
     int temp = values[i];
     values[i] = values[j];

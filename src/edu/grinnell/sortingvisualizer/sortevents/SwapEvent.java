@@ -6,12 +6,12 @@ import java.util.List;
 public class SwapEvent<T extends Comparable<T>> implements SortEvent<T> {
   private int firstIndex;
   private int secondIndex;
-  
+
   public SwapEvent(int first, int second) {
     this.firstIndex = first;
     this.secondIndex = second;
   }
-  
+
   @Override
   public void apply(T[] arr) {
     T temp = arr[firstIndex];
@@ -21,7 +21,7 @@ public class SwapEvent<T extends Comparable<T>> implements SortEvent<T> {
 
   @Override
   public List<Integer> getAffectedIndices() {
-    List<Integer> listIndices = new ArrayList<Integer> ();
+    List<Integer> listIndices = new ArrayList<Integer>();
     listIndices.add(Integer.valueOf(firstIndex));
     listIndices.add(Integer.valueOf(secondIndex));
     return listIndices;

@@ -3,15 +3,15 @@ package edu.grinnell.sortingvisualizer.sortevents;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CopyEvent<T extends Comparable<T>> implements SortEvent <T> {
+public class CopyEvent<T extends Comparable<T>> implements SortEvent<T> {
   private int index;
   private T val;
-  
+
   public CopyEvent(int index, T val) {
     this.index = index;
     this.val = val;
   }
-  
+
   @Override
   public void apply(T[] arr) {
     arr[index] = val;
@@ -19,7 +19,7 @@ public class CopyEvent<T extends Comparable<T>> implements SortEvent <T> {
 
   @Override
   public List<Integer> getAffectedIndices() {
-    List<Integer> listIndices = new ArrayList<Integer> ();
+    List<Integer> listIndices = new ArrayList<Integer>();
     listIndices.add(Integer.valueOf(index));
     return listIndices;
   }

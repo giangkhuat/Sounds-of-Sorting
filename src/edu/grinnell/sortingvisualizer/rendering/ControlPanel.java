@@ -48,8 +48,8 @@ public class ControlPanel extends JPanel {
         return Sorts.selectionSort(arr);
       case "Insertion":
         return Sorts.insertionSort(arr);
-      case "Heap":
-        return Sorts.heapSort(arr);
+      case "Bubble":
+        return Sorts.bubbleSort(arr);
       case "Merge":
         return Sorts.mergeSort(arr);
       case ("Quick"):
@@ -101,7 +101,7 @@ public class ControlPanel extends JPanel {
 
     ///// The sort selection combo box /////
     JComboBox<String> sorts =
-        new JComboBox<>(new String[] {"Selection", "Insertion", "Heap", "Merge", "Quick"});
+        new JComboBox<>(new String[] {"Selection", "Insertion", "Bubble", "Merge", "Quick"});
     add(sorts);
 
     ///// The scale selection combo box /////
@@ -141,11 +141,11 @@ public class ControlPanel extends JPanel {
         List<SortEvent<Integer>> events =
             generateEvents((String) sorts.getSelectedItem(), notesCopy);
         // Add compare events
-       
+
         for (int i = 0; i < notes.getNotes().length - 1; i++) {
           events.add(new CompareEvent<Integer>(i, i + 1));
         }
-        
+
 
 
         // NOTE: The Timer class repetitively invokes a method at a
@@ -171,8 +171,6 @@ public class ControlPanel extends JPanel {
               notes.clearAllHighlighted();
               e.apply(notes.getNotes());
               for (Integer i : e.getAffectedIndices()) {
-                System.out.println(i);
-                System.out.println(e.toString());
                 scale.playNote(i, e.isEmphasized());
                 notes.highlightNote(i);
               }

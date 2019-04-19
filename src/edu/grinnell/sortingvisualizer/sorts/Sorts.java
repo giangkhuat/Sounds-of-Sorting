@@ -172,61 +172,28 @@ public class Sorts<T extends Comparable<T>> {
     }
   }
 
-
   /**
-   * Heapsort
+   * Bubble Sort - taken from https://www.geeksforgeeks.org/bubble-sort/
    */
 
-  public static <T extends Comparable<T>> List<SortEvent<T>> heapSort(T[] arr) {
+  public static <T extends Comparable<T>> List<SortEvent<T>> bubbleSort(T[] arr) {
     List<SortEvent<T>> eventList = new ArrayList<>();
     int n = arr.length;
-
-    // Build heap (rearrange array)
-    for (int i = n / 2 - 1; i >= 0; i--)
-      heapify(arr, n, i, eventList);
-
-    // One by one extract an element from heap
-    for (int i = n - 1; i >= 0; i--) {
-      // Move current root to end
-      T temp = arr[0];
-      arr[0] = arr[i];
-      arr[i] = temp;
-      eventList.add(new SwapEvent<T>(0, i));
-      // call max heapify on the reduced heap
-      heapify(arr, i, 0, eventList);
+    for (int i = 0; i < n - 1; i++) {
+      for (int j = 0; j < n - i - 1; j++) {
+        eventList.add(new CompareEvent<T>(j, j + 1));
+        if (arr[j].compareTo(arr[j + 1]) > 0) {
+          // swap arr[j+1] and arr[j]
+          eventList.add(new SwapEvent<T>(j + 1, j));
+          T temp = arr[j];
+          arr[j] = arr[j + 1];
+          arr[j + 1] = temp;
+        }
+      }
     }
     return eventList;
   }
 
-  // To heapify a subtree rooted with node i which is
-  // an index in arr[]. n is size of heap
-  public static <T extends Comparable<T>> void heapify(T arr[], int n, int i,
-      List<SortEvent<T>> eventList) {
-    int largest = i; // Initialize largest as root
-    int l = 2 * i + 1; // left = 2*i + 1
-    int r = 2 * i + 2; // right = 2*i + 2
-
-    // If left child is larger than root
-    eventList.add(new CompareEvent<T>(l, largest));
-    if (l < n && arr[l].compareTo(arr[largest]) > 0)
-      largest = l;
-    System.out.println("l" + l);
-    // If right child is larger than largest so far
-    eventList.add(new CompareEvent<T>(r, largest));
-    if (r < n && arr[r].compareTo(arr[largest]) > 0)
-      largest = r;
-
-    // If largest is not root
-    if (largest != i) {
-      T swap = arr[i];
-      arr[i] = arr[largest];
-      arr[largest] = swap;
-
-      eventList.add(new SwapEvent<T>(i, largest));
-      // Recursively heapify the affected sub-tree
-      heapify(arr, n, largest, eventList);
-    }
-  }
 
   /**
    * Helpers

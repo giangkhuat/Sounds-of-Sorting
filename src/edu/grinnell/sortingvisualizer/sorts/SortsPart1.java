@@ -2,7 +2,7 @@ package edu.grinnell.sortingvisualizer.sorts;
 
 public class SortsPart1<T extends Comparable<T>> {
   public SortsPart1() {
-    
+
   }
 
   /**
@@ -60,58 +60,24 @@ public class SortsPart1<T extends Comparable<T>> {
   }
 
   /**
-   * Heap Sort - taken from https://www.geeksforgeeks.org/heap-sort/
+   * Bubble Sort - taken from https://www.geeksforgeeks.org/bubble-sort/
    */
-  
-  public static <T extends Comparable<T>> void heapSort(T[] arr) 
-  { 
-      int n = arr.length; 
 
-      // Build heap (rearrange array) 
-      for (int i = n / 2 - 1; i >= 0; i--) 
-          heapify(arr, n, i); 
+  public static <T extends Comparable<T>> void bubbleSort(T[] arr) {
+    int n = arr.length;
+    for (int i = 0; i < n - 1; i++) {
+      for (int j = 0; j < n - i - 1; j++) {
+        if (arr[j].compareTo(arr[j + 1]) > 0) {
+          // swap arr[j+1] and arr[i]
+          T temp = arr[j];
+          arr[j] = arr[j + 1];
+          arr[j + 1] = temp;
+        }
+      }
+    }
+  }
 
-      // One by one extract an element from heap 
-      for (int i=n-1; i>=0; i--) 
-      { 
-          // Move current root to end 
-          T temp = arr[0]; 
-          arr[0] = arr[i]; 
-          arr[i] = temp; 
 
-          // call max heapify on the reduced heap 
-          heapify(arr, i, 0); 
-      } 
-  } 
-
-  // To heapify a subtree rooted with node i which is 
-  // an index in arr[]. n is size of heap 
- public static <T extends Comparable<T>> void heapify(T arr[], int n, int i) 
-  { 
-      int largest = i; // Initialize largest as root 
-      int l = 2*i + 1; // left = 2*i + 1 
-      int r = 2*i + 2; // right = 2*i + 2 
-
-      // If left child is larger than root 
-      if (l < n && arr[l].compareTo(arr[largest]) > 0) 
-          largest = l; 
-
-      // If right child is larger than largest so far 
-      if (r < n && arr[r].compareTo(arr[largest]) > 0) 
-          largest = r; 
-
-      // If largest is not root 
-      if (largest != i) 
-      { 
-          T swap = arr[i]; 
-          arr[i] = arr[largest]; 
-          arr[largest] = swap; 
-
-          // Recursively heapify the affected sub-tree 
-          heapify(arr, n, largest); 
-      } 
-  } 
-  
   /*
    * HELPERS
    */
@@ -149,8 +115,6 @@ public class SortsPart1<T extends Comparable<T>> {
   }
 
 
-  
-  
 
   /*
    * Procedure mergeSortHelper
@@ -162,60 +126,29 @@ public class SortsPart1<T extends Comparable<T>> {
       mergeSortHelper(arr, lo, mid);
       mergeSortHelper(arr, mid, hi);
       merge(arr, lo, mid, hi);
-    }
-    else {
-      return ;
+    } else {
+      return;
     }
   }
-  
+
   /*
    * Procedure to perform merge for mergeSort
    */
 
   @SuppressWarnings("unchecked")
-  public static <T extends Comparable<T>> void merge 
-  (T[] arr, int lo, int mid, int hi) {
-      Object[] temp = new Object[hi-lo];
-      int i = lo, j = mid, k = 0;
-
-      while (i < mid && j < hi) {
-          if (arr[i].compareTo(arr[j]) <= 0) {
-              temp[k++] = arr[i++];
-          } else {
-              temp[k++] = arr[j++];
-          }
-      } // while
-
-      // Copies the remaining elements into temp
-      while (i < mid) {
-          temp[k++] = arr[i++];
-      }
-
-      while (j < hi) {
-          temp[k++] = arr[j++];
-      }
-
-      // Put elements in temp back into arr
-      for (int n = 0; n < hi - lo; n++) {
-          arr[n + lo] =  (T) temp[n];
-      }
-  } // merge 
-
-/*
-  public static <T extends Comparable<T>> void merge(T[] arr, int lo, int hi, int mid) {
+  public static <T extends Comparable<T>> void merge(T[] arr, int lo, int mid, int hi) {
+    Object[] temp = new Object[hi - lo];
     int i = lo, j = mid, k = 0;
 
-    //T[] temp = (T[]) new Object[hi - lo];
-    T[] temp = Arrays.copyOf(arr, hi-lo);
-    
     while (i < mid && j < hi) {
-      if ((arr[i]).compareTo(arr[j]) <= 0) {
+      if (arr[i].compareTo(arr[j]) <= 0) {
         temp[k++] = arr[i++];
       } else {
         temp[k++] = arr[j++];
       }
-    }
+    } // while
 
+    // Copies the remaining elements into temp
     while (i < mid) {
       temp[k++] = arr[i++];
     }
@@ -224,9 +157,25 @@ public class SortsPart1<T extends Comparable<T>> {
       temp[k++] = arr[j++];
     }
 
-    for (int n = 0; n < (hi - lo); n++) {
-      arr[n + lo] = temp[n];
+    // Put elements in temp back into arr
+    for (int n = 0; n < hi - lo; n++) {
+      arr[n + lo] = (T) temp[n];
     }
-  }
-  */
+  } // merge
+
+  /*
+   * public static <T extends Comparable<T>> void merge(T[] arr, int lo, int hi, int mid) { int i =
+   * lo, j = mid, k = 0;
+   * 
+   * //T[] temp = (T[]) new Object[hi - lo]; T[] temp = Arrays.copyOf(arr, hi-lo);
+   * 
+   * while (i < mid && j < hi) { if ((arr[i]).compareTo(arr[j]) <= 0) { temp[k++] = arr[i++]; } else
+   * { temp[k++] = arr[j++]; } }
+   * 
+   * while (i < mid) { temp[k++] = arr[i++]; }
+   * 
+   * while (j < hi) { temp[k++] = arr[j++]; }
+   * 
+   * for (int n = 0; n < (hi - lo); n++) { arr[n + lo] = temp[n]; } }
+   */
 }

@@ -8,7 +8,7 @@ import edu.grinnell.sortingvisualizer.sorts.utils.TestUtils;
 class SortsTest<T extends Comparable<T>> {
 
   // +-----------------+--------------------------------------------------
-  // | Ultilities      |
+  // | Ultilities |
   // +-----------------+/*
 
   /**
@@ -71,7 +71,7 @@ class SortsTest<T extends Comparable<T>> {
     testEmptyInts((arr) -> SortsPart1.selectionSort(arr));
     testEmptyInts((arr) -> SortsPart1.mergeSort(arr));
     testEmptyInts((arr) -> SortsPart1.quickSort(arr));
-    testEmptyInts((arr) -> SortsPart1.heapSort(arr));
+    testEmptyInts((arr) -> SortsPart1.bubbleSort(arr));
   } // testEmptyInts
 
   void testEmptyStrings(Consumer<String[]> sorter) {
@@ -85,7 +85,7 @@ class SortsTest<T extends Comparable<T>> {
     testEmptyStrings((arr) -> SortsPart1.selectionSort(arr));
     testEmptyStrings((arr) -> SortsPart1.mergeSort(arr));
     testEmptyStrings((arr) -> SortsPart1.quickSort(arr));
-    testEmptyStrings((arr) -> SortsPart1.heapSort(arr));
+    testEmptyStrings((arr) -> SortsPart1.bubbleSort(arr));
   } // testEmptyStrings
 
 
@@ -106,7 +106,7 @@ class SortsTest<T extends Comparable<T>> {
     testOrderedInts((arr) -> SortsPart1.mergeSort(arr));
     testOrderedInts((arr) -> SortsPart1.quickSort(arr));
     testOrderedInts((arr) -> SortsPart1.insertionSort(arr));
-    testOrderedInts((arr) -> SortsPart1.heapSort(arr));
+    testOrderedInts((arr) -> SortsPart1.bubbleSort(arr));
   } // testOrderedInts
 
 
@@ -128,7 +128,7 @@ class SortsTest<T extends Comparable<T>> {
     testOrderedStrings((arr) -> SortsPart1.selectionSort(arr));
     testOrderedStrings((arr) -> SortsPart1.mergeSort(arr));
     testOrderedStrings((arr) -> SortsPart1.quickSort(arr));
-    testOrderedStrings((arr) -> SortsPart1.heapSort(arr));
+    testOrderedStrings((arr) -> SortsPart1.bubbleSort(arr));
   } // testOrderedStrings
 
 
@@ -150,7 +150,7 @@ class SortsTest<T extends Comparable<T>> {
     testBackwardsInts((arr) -> SortsPart1.selectionSort(arr));
     testBackwardsInts((arr) -> SortsPart1.mergeSort(arr));
     testBackwardsInts((arr) -> SortsPart1.quickSort(arr));
-    testBackwardsInts((arr) -> SortsPart1.heapSort(arr));
+    testBackwardsInts((arr) -> SortsPart1.bubbleSort(arr));
   } // testBackwardsInts
 
   void testBackwardsStrings(Consumer<String[]> sorter) {
@@ -179,7 +179,7 @@ class SortsTest<T extends Comparable<T>> {
     testBackwardsStrings((arr) -> SortsPart1.selectionSort(arr));
     testBackwardsStrings((arr) -> SortsPart1.mergeSort(arr));
     testBackwardsStrings((arr) -> SortsPart1.quickSort(arr));
-    testBackwardsStrings((arr) -> SortsPart1.heapSort(arr));
+    testBackwardsStrings((arr) -> SortsPart1.bubbleSort(arr));
   } // testBackwardsInts
 
 
@@ -204,7 +204,7 @@ class SortsTest<T extends Comparable<T>> {
     testRandom((arr) -> SortsPart1.selectionSort(arr));
     testRandom((arr) -> SortsPart1.mergeSort(arr));
     testRandom((arr) -> SortsPart1.quickSort(arr));
-    testRandom((arr) -> SortsPart1.heapSort(arr));
+    testRandom((arr) -> SortsPart1.bubbleSort(arr));
   } // testRandom
 
 }

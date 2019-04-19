@@ -13,12 +13,11 @@ public class CompareEvent<T extends Comparable<T>> implements SortEvent<T> {
   }
 
   @Override
-  public void apply(T[] arr) {
-  }
+  public void apply(T[] arr) {}
 
   @Override
   public List<Integer> getAffectedIndices() {
-    List<Integer> listIndices = new ArrayList<Integer> ();
+    List<Integer> listIndices = new ArrayList<Integer>();
     listIndices.add(Integer.valueOf(firstIndex));
     listIndices.add(Integer.valueOf(secondIndex));
     return listIndices;
