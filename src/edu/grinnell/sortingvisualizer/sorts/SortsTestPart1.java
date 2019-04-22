@@ -5,7 +5,7 @@ import java.util.function.Consumer;
 import org.junit.jupiter.api.Test;
 import edu.grinnell.sortingvisualizer.sorts.utils.TestUtils;
 
-class SortsTest<T extends Comparable<T>> {
+class SortsTestPart1<T extends Comparable<T>> {
 
   // +-----------------+--------------------------------------------------
   // | Ultilities |
@@ -62,7 +62,7 @@ class SortsTest<T extends Comparable<T>> {
 
   void testEmptyInts(Consumer<Integer[]> sorter) {
     Integer[] testArray = new Integer[0];
-    checkSortedInts(sorter, testArray);
+    checkSortedInts(sorter, testArray.clone()); 
   } // testEmptyInts
 
   @Test
@@ -72,6 +72,12 @@ class SortsTest<T extends Comparable<T>> {
     testEmptyInts((arr) -> SortsPart1.mergeSort(arr));
     testEmptyInts((arr) -> SortsPart1.quickSort(arr));
     testEmptyInts((arr) -> SortsPart1.bubbleSort(arr));
+    
+    // create array 
+    
+    
+    
+    
   } // testEmptyInts
 
   void testEmptyStrings(Consumer<String[]> sorter) {
@@ -206,5 +212,4 @@ class SortsTest<T extends Comparable<T>> {
     testRandom((arr) -> SortsPart1.quickSort(arr));
     testRandom((arr) -> SortsPart1.bubbleSort(arr));
   } // testRandom
-
 }
