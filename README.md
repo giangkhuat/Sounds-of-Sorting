@@ -4,7 +4,9 @@ Author: Giang Khuat and Mia le
 References: Get Help from Nhi Ngo - CS lab tutor and Oen - CS lab tutor.
 
 Link: 
+
     * Bubble sort: https://www.geeksforgeeks.org/bubble-sort/
+    
     * https://github.com/ngonhi/Sounds-Of-Sortings
 
 This is a class assignment for Class CSC207 - Grinnell College Spring 2019, inspired by the work of Timo Bingmann and Casey Rule!
